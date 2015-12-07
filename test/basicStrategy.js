@@ -14,7 +14,7 @@ Lab.experiment("Making sure that the passport-facebook works as expected", funct
 
     test("simplest request", function (done) {
         var redirectMock = nodemock.mock("redirect")
-                                    .takes("https://www.facebook.com/dialog/oauth?response_type=code&redirect_uri=&client_id=myClientId"),
+                .takes("https://www.facebook.com/dialog/oauth?response_type=code&redirect_uri=&client_id=myClientId"),
             facebookImpl = new Facebook({
                 clientID: "myClientId",
                 clientSecret: "myClientSecret"
@@ -246,8 +246,8 @@ Lab.experiment("userProfile", function () {
             bodyPatterns.forEach(function (body, bIndex) {
 
                 var mockOauth2 = nodemock.mock('get')
-                    .takes(profileURL, accessToken, function () { return undefined; })
-                    .calls(2, [error, body, {}]),
+                        .takes(profileURL, accessToken, function () { return undefined; })
+                        .calls(2, [error, body, {}]),
                     oauth2 = '_oauth2';
                 facebookImpl[oauth2] = mockOauth2;
                 facebookImpl.userProfile(accessToken, function (e, p) {
