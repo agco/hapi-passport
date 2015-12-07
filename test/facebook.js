@@ -13,8 +13,7 @@ function dontCall() {
 Lab.experiment("Making sure that the passport-facebook works as expected", function () {
 
     test("simplest request", function (done) {
-        var redirectMock = nodemock.mock("redirect")
-                                    .takes("https://www.facebook.com/dialog/oauth?response_type=code&redirect_uri=&client_id=myClientId"),
+        var redirectMock = nodemock.mock("redirect").takes("https://www.facebook.com/dialog/oauth?response_type=code&redirect_uri=&client_id=myClientId"),
             facebookImpl = new Facebook({
                 clientID: "myClientId",
                 clientSecret: "myClientSecret"
